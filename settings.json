@@ -1,0 +1,101 @@
+[
+  {
+    "uniqueID": "AccentColor",
+    "type": "color",
+    "title": "Accent color (blue)",
+    "description": "Primary accent: pp number, graph start, highlights.",
+    "value": "#7cc4ff"
+  },
+  {
+    "uniqueID": "AccentColor2",
+    "type": "color",
+    "title": "Accent color 2 (purple)",
+    "description": "Secondary accent: mod chips and the far end of the graph gradient.",
+    "value": "#c4a6ff"
+  },
+  {
+    "uniqueID": "PanelOpacity",
+    "type": "number",
+    "title": "Panel opacity",
+    "description": "Opacity of the frosted panel background (0-100).",
+    "min": 0,
+    "max": 100,
+    "value": 98
+  },
+  {
+    "uniqueID": "Tagline",
+    "type": "text",
+    "title": "Tagline",
+    "description": "Small watermark text over the graph (e.g. your name or a catchphrase). Leave blank to hide.",
+    "value": "isthatdecay"
+  },
+  {
+    "uniqueID": "ShowIdentity",
+    "type": "checkbox",
+    "title": "Show player strip",
+    "description": "Show the avatar / username / rank / total pp strip along the top.",
+    "options": "Enabled, Disabled",
+    "value": true
+  },
+  {
+    "uniqueID": "ShowSession",
+    "type": "checkbox",
+    "title": "Show session stats",
+    "description": "Show pp gained + play count for this session in the player strip. Off by default.",
+    "options": "Enabled, Disabled",
+    "value": false
+  },
+  {
+    "uniqueID": "ShowBackground",
+    "type": "checkbox",
+    "title": "Show map background",
+    "description": "Show the blurred beatmap background behind the counter.",
+    "options": "Enabled, Disabled",
+    "value": true
+  },
+  {
+    "uniqueID": "ShowUR",
+    "type": "checkbox",
+    "title": "Show unstable rate",
+    "description": "Show the live unstable rate (UR) during play.",
+    "options": "Enabled, Disabled",
+    "value": true
+  },
+  {
+    "uniqueID": "UseSSPP",
+    "type": "checkbox",
+    "title": "Show SS pp instead of if-FC",
+    "description": "Use the pp value for an SS (100%) instead of pp-if-FC as the secondary pp number.",
+    "options": "Enabled, Disabled",
+    "value": false
+  },
+  {
+    "uniqueID": "DimOnPause",
+    "type": "checkbox",
+    "title": "Dim when paused",
+    "description": "Gently dim the counter when the game is paused or unfocused.",
+    "options": "Enabled, Disabled",
+    "value": true
+  },
+  {
+    "uniqueID": "GoodColor",
+    "type": "color",
+    "title": "100 color",
+    "description": "Color of the 100 judgement counter.",
+    "value": "#9ece6a"
+  },
+  {
+    "uniqueID": "OkColor",
+    "type": "color",
+    "title": "50 color",
+    "description": "Color of the 50 judgement counter.",
+    "value": "#e0af68"
+  },
+  {
+    "uniqueID": "BadColor",
+    "type": "color",
+    "title": "Miss color",
+    "description": "Color of the miss judgement counter.",
+    "value": "#f7768e"
+  }
+]

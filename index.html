@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>decay — pp counter</title>
+		<link rel="stylesheet" href="css/theme.css" />
+		<link rel="stylesheet" href="css/odometr.css" />
+		<link rel="stylesheet" href="css/counter.css" />
+		<link rel="stylesheet" href="css/hit-judgements.css" />
+	</head>
+	<body>
+		<div id="app" class="state-menu">
+			<div class="counter">
+				<div id="bg"></div>
+				<div id="scrim"></div>
+
+				<!-- personalized identity strip -->
+				<div class="identity">
+					<div class="avatar" id="avatar"><span id="avatar-initial">?</span></div>
+					<div class="who">
+						<span class="pname" id="pname">player</span>
+						<span class="pmeta">
+							<span class="prank" id="prank">#—</span>
+							<span class="ppp" id="ppp">0pp</span>
+						</span>
+					</div>
+					<div class="session" id="session" style="display: none">
+						<span class="sess-gain" id="sess-gain">+0<i>pp</i></span>
+						<span class="sess-plays" id="sess-plays">0<i>plays</i></span>
+					</div>
+				</div>
+
+				<div class="card">
+					<!-- song / mods -->
+					<div class="row song">
+						<div class="titles">
+							<div class="marquee" id="title-wrap">
+								<span class="title" id="title">no map</span>
+							</div>
+							<div class="sub">
+								<span class="artist" id="artist">—</span>
+								<span class="dot">·</span>
+								<span class="diff" id="diff">—</span>
+								<span class="dot">·</span>
+								<span class="mapper" id="mapper">—</span>
+							</div>
+						</div>
+						<div class="mods" id="mods"></div>
+					</div>
+
+					<!-- map stats -->
+					<div class="row map">
+						<div class="sr" id="sr-badge"><span id="sr">0.00</span><i>★</i></div>
+						<div class="stat"><label>BPM</label><span id="bpm">0</span></div>
+						<div class="stat"><label>AR</label><span id="ar">0</span></div>
+						<div class="stat"><label>CS</label><span id="cs">0</span></div>
+						<div class="stat"><label>OD</label><span id="od">0</span></div>
+						<div class="stat"><label>HP</label><span id="hp">0</span></div>
+					</div>
+
+					<!-- performance (option A: hero current + mini max/fc) -->
+					<div class="row perf">
+						<div class="pp-group">
+							<div class="pp">
+								<span class="pp-cur" id="pp">0</span>
+								<span class="pp-unit">pp</span>
+							</div>
+							<div class="pp-mini">
+								<div class="mini mini-max"><b id="ppmax">0</b><i>max curr possible</i></div>
+								<div class="mini mini-fc"><b id="ppfc">0</b><i>if fc</i></div>
+							</div>
+						</div>
+
+						<div class="side">
+							<div class="acc-line">
+								<span class="rank" id="rank">SS</span>
+								<span class="acc"><span id="acc">100.00</span><i>%</i></span>
+								<span class="combo"><span id="combo">0</span><i>x</i></span>
+							</div>
+							<div class="judge">
+								<span class="j good" id="h100">0</span>
+								<span class="j ok" id="h50">0</span>
+								<span class="j bad" id="h0">0</span>
+								<span class="j ur" id="ur-wrap"><span id="ur">0</span><i>ur</i></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="graph-wrap">
+				<canvas class="graph" id="graph"></canvas>
+				<div id="hit-judgements"></div>
+			</div>
+			<div class="tagline" id="tagline">isthatdecay</div>
+
+			<script src="js/odometr.js"></script>
+			<script src="js/countUp.js"></script>
+			<script type="module" src="js/main.js"></script>
+		</div>
+	</body>
+</html>

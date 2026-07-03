@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>opt A</title>
+		<link rel="stylesheet" href="../css/theme.css" />
+		<link rel="stylesheet" href="../css/counter.css" />
+		<style>
+			#bg { background: linear-gradient(135deg, #3a2f6b, #7a3b6e 55%, #2b4a7a); }
+			.perf { align-items: flex-end; }
+			.pp-group { display: flex; align-items: flex-end; gap: 10px; }
+			.pp-mini { display: flex; flex-direction: column; gap: 2px; margin-bottom: 4px; }
+			.pp-mini div { display: flex; align-items: baseline; gap: 4px; line-height: 1.1; }
+			.pp-mini b { font-size: 15px; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+			.pp-mini i { font-style: normal; font-size: 9px; font-weight: 700; letter-spacing: 0.06em; color: var(--text-dim); text-transform: uppercase; }
+		</style>
+	</head>
+	<body>
+		<div id="app" class="state-play">
+			<div id="bg" class="show"></div>
+			<div id="scrim"></div>
+			<div class="card">
+				<div class="row song">
+					<div class="titles">
+						<div class="marquee"><span class="title">Camellia - Ghost feat. Nanahira</span></div>
+						<div class="diff">Haunting · riverxia</div>
+					</div>
+					<div class="mods"><span class="mod">HD</span><span class="mod">DT</span></div>
+				</div>
+				<div class="row map">
+					<div class="sr" style="background:#5f5ed9;color:#fff"><span>6.83</span><i>★</i></div>
+					<div class="stat"><label>BPM</label><span>174</span></div>
+					<div class="stat"><label>AR</label><span style="color:var(--bad)">9.5</span></div>
+					<div class="stat"><label>CS</label><span>4</span></div>
+					<div class="stat"><label>OD</label><span style="color:var(--bad)">9</span></div>
+					<div class="stat"><label>HP</label><span>5</span></div>
+				</div>
+				<div class="row perf">
+					<div class="pp-group">
+						<div class="pp"><span class="pp-cur">301</span><span class="pp-unit">pp</span></div>
+						<div class="pp-mini">
+							<div><b>468</b><i>max</i></div>
+							<div><b>512</b><i>fc</i></div>
+						</div>
+					</div>
+					<div class="side">
+						<div class="acc-line">
+							<span class="rank" data-rank="S">S</span>
+							<span class="acc">99.13<i>%</i></span>
+							<span class="combo">558<i>x</i></span>
+						</div>
+						<div class="judge">
+							<span class="j good">8</span>
+							<span class="j ok">1</span>
+							<span class="j bad">2</span>
+							<span class="j ur">132<i>ur</i></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="progress"><div class="progress-fill" style="width:62%"></div></div>
+		</div>
+	</body>
+</html>

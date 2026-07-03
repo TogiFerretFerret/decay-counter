@@ -1,0 +1,496 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	width: 500px;
+	height: 218px;
+	overflow: hidden;
+	background: transparent;
+	font-family: var(--font);
+	color: var(--text);
+	-webkit-font-smoothing: antialiased;
+}
+
+#app {
+	position: relative;
+	width: 500px;
+	height: 218px;
+	border-radius: var(--radius);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	transition: opacity var(--dur) var(--ease), filter var(--dur) var(--ease);
+}
+
+/* the 150px "card" area (bg + scrim + content); graph sits below it */
+.counter {
+	position: relative;
+	flex: 1;
+	min-height: 0;
+}
+
+/* strain graph strip */
+.graph-wrap {
+	position: relative;
+	flex-shrink: 0;
+	height: 42px;
+}
+.graph {
+	display: block;
+	width: 100%;
+	height: 42px;
+	background: rgba(var(--panel), calc(var(--panel-opacity) * 0.9));
+}
+
+/* dim when paused / unfocused */
+#app.paused {
+	opacity: 0.55;
+	filter: grayscale(0.3);
+}
+
+/* ---- background ---- */
+#bg {
+	position: absolute;
+	inset: -20px;
+	background-size: cover;
+	background-position: center;
+	filter: blur(14px) brightness(0.5);
+	transform: scale(1.1);
+	opacity: 0;
+	transition: opacity 0.4s var(--ease);
+}
+#bg.show {
+	opacity: 1;
+}
+#scrim {
+	position: absolute;
+	inset: 0;
+	background: rgba(var(--panel), var(--panel-opacity));
+	backdrop-filter: blur(var(--panel-blur));
+	-webkit-backdrop-filter: blur(var(--panel-blur));
+}
+
+/* ---- identity strip (personalized) ---- */
+.identity {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 30px;
+	z-index: 3;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 0 12px;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.38), transparent);
+}
+.avatar {
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	flex-shrink: 0;
+	background: linear-gradient(135deg, var(--accent), var(--accent-2));
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+.avatar #avatar-initial {
+	font-size: 12px;
+	font-weight: 800;
+	color: #14151c;
+}
+.avatar.loaded #avatar-initial {
+	display: none;
+}
+.who {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.15;
+	min-width: 0;
+}
+.pname {
+	font-size: 12.5px;
+	font-weight: 800;
+	letter-spacing: 0.01em;
+	white-space: nowrap;
+}
+.pmeta {
+	display: flex;
+	gap: 6px;
+	font-size: 10px;
+	font-variant-numeric: tabular-nums;
+}
+.prank {
+	color: var(--text-dim);
+	font-weight: 700;
+}
+.ppp {
+	color: var(--accent);
+	font-weight: 800;
+}
+.session {
+	margin-left: auto;
+	display: flex;
+	gap: 10px;
+	align-items: baseline;
+	font-variant-numeric: tabular-nums;
+}
+.session span {
+	font-size: 12px;
+	font-weight: 800;
+}
+.session i {
+	font-style: normal;
+	font-size: 9px;
+	font-weight: 700;
+	color: var(--text-dim);
+	margin-left: 2px;
+	text-transform: uppercase;
+}
+.sess-gain {
+	color: var(--accent-2);
+}
+.sess-plays {
+	color: var(--text);
+}
+
+/* ---- tagline watermark ---- */
+.tagline {
+	position: absolute;
+	right: 12px;
+	bottom: 26px; /* top-right of the graph strip (graph is 42px tall), padded from the top */
+	z-index: 4;
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	text-transform: lowercase;
+	color: var(--accent-2);
+	opacity: 0.85;
+	pointer-events: none;
+}
+
+/* ---- card layout ---- */
+.card {
+	position: relative;
+	height: 100%;
+	padding: 36px 14px 13px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+.row {
+	display: flex;
+	align-items: center;
+}
+
+/* ---- song row ---- */
+.song {
+	justify-content: space-between;
+	gap: 10px;
+}
+.titles {
+	min-width: 0;
+	flex: 1;
+}
+.marquee {
+	overflow: hidden;
+	white-space: nowrap;
+}
+.title {
+	display: inline-block;
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 0.01em;
+}
+.sub {
+	display: flex;
+	align-items: baseline;
+	gap: 5px;
+	margin-top: 2px;
+	font-size: 11px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.sub .artist {
+	color: var(--accent);
+	font-weight: 700;
+	flex-shrink: 0;
+}
+.sub .dot {
+	color: var(--text-dim);
+	opacity: 0.55;
+	flex-shrink: 0;
+}
+.diff {
+	color: var(--text);
+	font-weight: 600;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	min-width: 0;
+}
+.mapper {
+	color: var(--text-dim);
+	flex-shrink: 0;
+}
+.mods {
+	display: flex;
+	gap: 3px;
+	flex-shrink: 0;
+}
+.mods .mod {
+	font-size: 10px;
+	font-weight: 800;
+	letter-spacing: 0.04em;
+	padding: 2px 5px;
+	border-radius: 6px;
+	background: color-mix(in srgb, var(--accent-2) 24%, transparent);
+	color: var(--accent-2);
+}
+
+/* ---- map stats row ---- */
+.map {
+	gap: 8px;
+}
+.sr {
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+	font-size: 12px;
+	font-weight: 800;
+	color: #14151c;
+	background: var(--accent);
+	padding: 2px 7px;
+	border-radius: 7px;
+}
+.sr i {
+	font-style: normal;
+	font-size: 10px;
+	opacity: 0.85;
+}
+.stat {
+	display: flex;
+	align-items: baseline;
+	gap: 4px;
+	font-size: 11px;
+}
+.stat label {
+	color: var(--text-dim);
+	font-weight: 600;
+	font-size: 9.5px;
+	letter-spacing: 0.05em;
+}
+.stat span {
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+}
+
+/* ---- performance row ---- */
+.perf {
+	margin-top: auto;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 12px;
+}
+.pp-group {
+	display: flex;
+	align-items: flex-end;
+	gap: 10px;
+}
+.pp {
+	display: flex;
+	align-items: baseline;
+	gap: 4px;
+	line-height: 1;
+}
+.pp-cur {
+	font-size: 40px;
+	font-weight: 800;
+	color: var(--accent);
+	font-variant-numeric: tabular-nums;
+	letter-spacing: -0.02em;
+	text-shadow: 0 0 22px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.pp-unit {
+	font-size: 13px;
+	color: var(--accent);
+	font-weight: 700;
+	margin-left: 1px;
+}
+.pp-mini {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	margin-bottom: 4px;
+}
+.pp-mini .mini {
+	display: flex;
+	align-items: baseline;
+	gap: 4px;
+	line-height: 1.1;
+}
+.pp-mini b {
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--text);
+	font-variant-numeric: tabular-nums;
+}
+.pp-mini i {
+	font-style: normal;
+	font-size: 9px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--accent-2);
+	opacity: 0.85;
+}
+
+.side {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 4px;
+}
+.acc-line {
+	display: flex;
+	align-items: baseline;
+	gap: 9px;
+	font-variant-numeric: tabular-nums;
+}
+.rank {
+	font-size: 16px;
+	font-weight: 900;
+	letter-spacing: 0.02em;
+}
+.acc {
+	font-size: 16px;
+	font-weight: 700;
+}
+.acc i,
+.combo i {
+	font-style: normal;
+	font-size: 11px;
+	color: var(--text-dim);
+	margin-left: 1px;
+}
+.combo {
+	font-size: 16px;
+	font-weight: 700;
+	color: var(--accent);
+}
+.judge {
+	display: flex;
+	gap: 8px;
+	font-size: 12px;
+	font-weight: 800;
+	font-variant-numeric: tabular-nums;
+}
+.j i {
+	font-style: normal;
+	font-size: 9px;
+	opacity: 0.6;
+	margin-left: 1px;
+	font-weight: 600;
+}
+.j.good {
+	color: var(--good);
+}
+.j.ok {
+	color: var(--ok);
+}
+.j.bad {
+	color: var(--bad);
+}
+.j.ur {
+	color: var(--text-dim);
+}
+
+/* ---- rank letter colors ---- */
+.rank[data-rank^="X"],
+.rank[data-rank^="SS"] {
+	color: #ffd24a;
+}
+.rank[data-rank^="S"] {
+	color: #ffd24a;
+}
+.rank[data-rank="A"] {
+	color: var(--good);
+}
+.rank[data-rank="B"] {
+	color: #7aa2f7;
+}
+.rank[data-rank="C"] {
+	color: #bb9af7;
+}
+.rank[data-rank="D"],
+.rank[data-rank="F"] {
+	color: var(--bad);
+}
+
+/* ---- state-driven visibility ---- */
+/* menu: no live play data — hide combo/judge/mini, show map + potential pp */
+.state-menu .judge,
+.state-menu .combo,
+.state-menu .pp-mini {
+	opacity: 0;
+}
+.state-menu .acc,
+.state-menu .rank {
+	opacity: 0.5;
+}
+
+/* result: maxAchievable isn't provided on the result screen */
+.state-result .mini-max {
+	display: none;
+}
+
+/* subtle kiai pulse */
+@keyframes kiai {
+	0%,
+	100% {
+		box-shadow: inset 0 0 0 0 transparent;
+	}
+	50% {
+		box-shadow: inset 0 0 34px -8px color-mix(in srgb, var(--accent) 60%, transparent);
+	}
+}
+#app.kiai .card {
+	animation: kiai 0.5s var(--ease);
+}
+
+/* pp bump when a new value lands */
+.pp-cur.bump {
+	animation: bump 0.28s var(--ease);
+}
+@keyframes bump {
+	0% {
+		transform: scale(1);
+	}
+	40% {
+		transform: scale(1.06);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+/* marquee scroll for long titles */
+.marquee.scroll .title {
+	animation: scroll-x 9s linear infinite;
+}
+@keyframes scroll-x {
+	0%,
+	12% {
+		transform: translateX(0);
+	}
+	88%,
+	100% {
+		transform: translateX(calc(-100% + 220px));
+	}
+}

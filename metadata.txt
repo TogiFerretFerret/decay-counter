@@ -1,0 +1,7 @@
+Usecase: ingame, obs-overlay
+Name: decay
+Author: River
+CompatibleWith: tosu
+Resolution: 500 x 218
+authorLinks: https://github.com/TogiFerretFerret
+Notes: a chill std pp counter made for IsThatDecay <3

@@ -1,0 +1,35 @@
+/* hit judgement markers overlaid on the strain graph (BTMC-style bars) */
+#hit-judgements {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
+#hit-judgements > * {
+	position: absolute;
+	width: 4px;
+	border-radius: 999px;
+	bottom: 0;
+	transition: height 250ms ease-in-out;
+}
+#hit-judgements > .hide {
+	height: 0 !important;
+}
+#hit-judgements .hj-100 {
+	z-index: 5;
+	height: 13px;
+	background-color: var(--good);
+}
+#hit-judgements .hj-50 {
+	z-index: 6;
+	height: 13px;
+	background-color: var(--ok);
+}
+#hit-judgements .hj-50.hj-sb,
+#hit-judgements .hj-100.hj-sb {
+	height: 26px;
+}
+#hit-judgements .hj-x {
+	z-index: 8;
+	height: 26px;
+	background-color: var(--bad);
+}
