@@ -382,36 +382,36 @@ body {
 	font-variant-numeric: tabular-nums;
 }
 .rank {
-	font-size: 16px;
+	font-size: 21px;
 	font-weight: 900;
 	letter-spacing: 0.02em;
 }
 .acc {
-	font-size: 16px;
+	font-size: 21px;
 	font-weight: 700;
 }
 .acc i,
 .combo i {
 	font-style: normal;
-	font-size: 11px;
+	font-size: 13px;
 	color: var(--text-dim);
 	margin-left: 1px;
 }
 .combo {
-	font-size: 16px;
+	font-size: 21px;
 	font-weight: 700;
 	color: var(--accent);
 }
 .judge {
 	display: flex;
-	gap: 8px;
-	font-size: 12px;
+	gap: 10px;
+	font-size: 16px;
 	font-weight: 800;
 	font-variant-numeric: tabular-nums;
 }
 .j i {
 	font-style: normal;
-	font-size: 9px;
+	font-size: 11px;
 	opacity: 0.6;
 	margin-left: 1px;
 	font-weight: 600;
