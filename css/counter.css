@@ -23,7 +23,7 @@ body {
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	transition: filter var(--dur) var(--ease);
+	transition: opacity var(--dur) var(--ease), filter var(--dur) var(--ease);
 }
 
 /* the 150px "card" area (bg + scrim + content); graph sits below it */
@@ -46,8 +46,9 @@ body {
 	background: rgba(var(--panel), calc(var(--panel-opacity) * 0.9));
 }
 
-/* paused / unfocused: desaturate only — never touch opacity */
+/* dim when paused / unfocused */
 #app.paused {
+	opacity: 0.55;
 	filter: grayscale(0.3);
 }
 
@@ -57,33 +58,20 @@ body {
 	inset: -20px;
 	background-size: cover;
 	background-position: center;
-	filter: blur(22px) brightness(0.55) saturate(1.1);
-	transform: scale(1.15);
+	filter: blur(14px) brightness(0.5);
+	transform: scale(1.1);
 	opacity: 0;
 	transition: opacity 0.4s var(--ease);
 }
 #bg.show {
-	opacity: 0.1;
+	opacity: 0.6;
 }
 #scrim {
 	position: absolute;
 	inset: 0;
 	background: rgba(var(--panel), var(--panel-opacity));
-	backdrop-filter: blur(var(--panel-blur)) saturate(1.12);
-	-webkit-backdrop-filter: blur(var(--panel-blur)) saturate(1.12);
-	box-shadow:
-		inset 0 1px 0 rgba(255, 255, 255, 0.1),
-		inset 0 -38px 52px -44px rgba(0, 0, 0, 0.3);
-}
-/* subtle frosted grain */
-#scrim::after {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
-	opacity: 1;
-	mix-blend-mode: overlay;
-	pointer-events: none;
+	backdrop-filter: blur(var(--panel-blur));
+	-webkit-backdrop-filter: blur(var(--panel-blur));
 }
 
 /* ---- identity strip (personalized) ---- */
@@ -196,7 +184,6 @@ body {
 	display: flex;
 	flex-direction: column;
 	gap: 6px;
-	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
 }
 .row {
 	display: flex;
@@ -377,36 +364,36 @@ body {
 	font-variant-numeric: tabular-nums;
 }
 .rank {
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: 900;
 	letter-spacing: 0.02em;
 }
 .acc {
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: 700;
 }
 .acc i,
 .combo i {
 	font-style: normal;
-	font-size: 12.5px;
+	font-size: 11px;
 	color: var(--text-dim);
 	margin-left: 1px;
 }
 .combo {
-	font-size: 20px;
+	font-size: 16px;
 	font-weight: 700;
 	color: var(--accent);
 }
 .judge {
 	display: flex;
-	gap: 9px;
-	font-size: 15px;
+	gap: 8px;
+	font-size: 12px;
 	font-weight: 800;
 	font-variant-numeric: tabular-nums;
 }
 .j i {
 	font-style: normal;
-	font-size: 10.5px;
+	font-size: 9px;
 	opacity: 0.6;
 	margin-left: 1px;
 	font-weight: 600;
