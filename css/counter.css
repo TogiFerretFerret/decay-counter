@@ -129,20 +129,22 @@ body {
 }
 .who {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+	align-items: baseline;
+	gap: 9px;
 	line-height: 1.15;
 	min-width: 0;
 }
 .pname {
-	font-size: 12.5px;
+	font-size: 14px;
 	font-weight: 800;
 	letter-spacing: 0.01em;
 	white-space: nowrap;
 }
 .pmeta {
 	display: flex;
-	gap: 6px;
-	font-size: 10px;
+	gap: 8px;
+	font-size: 12.5px;
 	font-variant-numeric: tabular-nums;
 }
 .prank {
@@ -409,6 +411,7 @@ body {
 .judge {
 	display: flex;
 	gap: 10px;
+	margin-top: -5px;
 	font-size: 16px;
 	font-weight: 800;
 	font-variant-numeric: tabular-nums;
@@ -430,7 +433,7 @@ body {
 	color: var(--bad);
 }
 .j.sb {
-	color: var(--accent-2);
+	color: var(--text-dim);
 }
 
 /* ---- rank letter colors ---- */
