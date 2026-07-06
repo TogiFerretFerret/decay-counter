@@ -10,7 +10,7 @@
 	/* surfaces */
 	--bg: #0f1017;
 	--panel: 18, 20, 28; /* rgb triplet; opacity applied via --panel-opacity */
-	--panel-opacity: 0.58;
+	--panel-opacity: 0.6;
 	--panel-blur: 24px;
 	--radius: 16px;
 
