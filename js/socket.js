@@ -34,6 +34,12 @@ export default class TosuSocket {
 		return this;
 	}
 
+	/** legacy v1 data (/ws) — hit counts are correct here on lazer where v2 lies */
+	v1(callback) {
+		this._connect("/ws", callback);
+		return this;
+	}
+
 	/** overlay settings channel (two-way) */
 	commands(callback) {
 		this._commands = this._connect("/websocket/commands", callback);

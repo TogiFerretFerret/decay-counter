@@ -308,6 +308,10 @@ body {
 	font-weight: 700;
 	font-variant-numeric: tabular-nums;
 }
+/* UR sits at the right end of the map row (above the combo), from v1 */
+.ur-stat {
+	margin-left: auto;
+}
 
 /* ---- performance row ---- */
 .perf {
@@ -425,8 +429,8 @@ body {
 .j.bad {
 	color: var(--bad);
 }
-.j.ur {
-	color: var(--text-dim);
+.j.sb {
+	color: var(--accent-2);
 }
 
 /* ---- rank letter colors ---- */

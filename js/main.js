@@ -22,7 +22,8 @@ const el = {
 	h50: $("h50"),
 	h0: $("h0"),
 	hj: $("hit-judgements"),
-	urWrap: $("ur-wrap"),
+	urStat: $("ur-stat"),
+	sb: $("sb"),
 	avatar: $("avatar"),
 	avatarInitial: $("avatar-initial"),
 	pname: $("pname"),
@@ -92,6 +93,9 @@ const changed = (key, val) => {
 
 const socket = new TosuSocket();
 
+// latest hit counts from the v1 /ws API (correct on lazer where v2's are not)
+let v1Hits = null;
+
 /* ================= settings channel ================= */
 export function applySettings(m) {
 	if (!m || typeof m !== "object") return;
@@ -111,7 +115,7 @@ export function applySettings(m) {
 	if (m.ShowBackground != null) settings.ShowBackground = truthy(m.ShowBackground);
 	if (m.ShowUR != null) {
 		settings.ShowUR = truthy(m.ShowUR);
-		el.urWrap.style.display = settings.ShowUR ? "" : "none";
+		el.urStat.style.display = settings.ShowUR ? "" : "none";
 	}
 	if (m.UseSSPP != null) settings.UseSSPP = truthy(m.UseSSPP);
 	if (m.DimOnPause != null) settings.DimOnPause = truthy(m.DimOnPause);
@@ -233,7 +237,10 @@ export function applyFrame({ state, game, beatmap, play, performance, resultsScr
 	}
 
 	/* -------- performance / judgements -------- */
-	const hits = mode === "result" ? resultsScreen.hits : play.hits;
+	// hit counts come from v1 during play (v2's 50s etc. are wrong on lazer);
+	// result uses v2's result-screen hits, menu uses v2's (stale) play hits.
+	const v2hits = mode === "result" ? resultsScreen.hits : play.hits;
+	const hits = mode === "play" && v1Hits ? v1Hits : v2hits;
 	const ssPP = performance.accuracy["100"];
 
 	// curr / max-now / if-fc  (see gameplay.ts semantics)
@@ -261,7 +268,7 @@ export function applyFrame({ state, game, beatmap, play, performance, resultsScr
 		acc = play.accuracy;
 		combo = play.combo.current;
 		rank = play.rank.current;
-		ur = play.unstableRate;
+		ur = v1Hits?.unstableRate ?? play.unstableRate ?? 0;
 	}
 
 	setOdo(num.pp, "pp", big);
@@ -309,6 +316,7 @@ export function applyFrame({ state, game, beatmap, play, performance, resultsScr
 	}
 
 	if (changed("ur", Math.round(ur))) num.ur.textContent = String(Math.round(ur));
+	if (changed("sb", sbCount)) el.sb.textContent = String(sbCount);
 
 	if (changed("rank", rank)) {
 		const norm = normRank(rank);
@@ -343,6 +351,9 @@ if (mockScene) {
 } else {
 	socket.commands((data) => applySettings(data?.message));
 	socket.send("getSettings", encodeURI(window.COUNTER_PATH ?? ""));
+	socket.v1((d) => {
+		v1Hits = d?.gameplay?.hits ?? null;
+	});
 	socket.v2(applyFrame);
 }
 
