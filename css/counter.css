@@ -64,7 +64,7 @@ body {
 	transition: opacity 0.4s var(--ease);
 }
 #bg.show {
-	opacity: 0.75;
+	opacity: 0.3;
 }
 #scrim {
 	position: absolute;

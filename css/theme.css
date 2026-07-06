@@ -10,7 +10,7 @@
 	/* surfaces */
 	--bg: #0f1017;
 	--panel: 18, 20, 28; /* rgb triplet; opacity applied via --panel-opacity */
-	--panel-opacity: 0.72; /* glass base tint — depth comes from edges/sheen/grain, not transparency */
+	--panel-opacity: 0.5; /* see-through glass; depth comes from edges/sheen/grain, not opacity */
 	--panel-blur: 26px;
 	--radius: 16px;
 
