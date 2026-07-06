@@ -58,13 +58,13 @@ body {
 	inset: -20px;
 	background-size: cover;
 	background-position: center;
-	filter: blur(14px) brightness(0.5);
-	transform: scale(1.1);
+	filter: blur(22px) brightness(0.55) saturate(1.1);
+	transform: scale(1.15);
 	opacity: 0;
 	transition: opacity 0.4s var(--ease);
 }
 #bg.show {
-	opacity: 0.6;
+	opacity: 0.75;
 }
 #scrim {
 	position: absolute;
