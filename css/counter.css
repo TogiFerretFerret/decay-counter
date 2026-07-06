@@ -69,43 +69,20 @@ body {
 #scrim {
 	position: absolute;
 	inset: 0;
-	/* top-lit glass surface: a light gradient from the top edge over the tint */
-	background:
-		linear-gradient(158deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 44%),
-		rgba(var(--panel), var(--panel-opacity));
-	backdrop-filter: blur(var(--panel-blur)) saturate(1.25);
-	-webkit-backdrop-filter: blur(var(--panel-blur)) saturate(1.25);
-	/* highlights & shadows = the depth that sells "glass" instead of "tint":
-	   bright top/left edges catch light, dark bottom/right edges + vignette recede */
+	background: rgba(var(--panel), var(--panel-opacity));
+	backdrop-filter: blur(var(--panel-blur)) saturate(1.12);
+	-webkit-backdrop-filter: blur(var(--panel-blur)) saturate(1.12);
 	box-shadow:
-		inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
-		inset 1.5px 0 0 rgba(255, 255, 255, 0.08),
-		inset -1.5px 0 0 rgba(0, 0, 0, 0.22),
-		inset 0 -1.5px 0 rgba(0, 0, 0, 0.42),
-		inset 0 -54px 66px -38px rgba(0, 0, 0, 0.46);
+		inset 0 1px 0 rgba(255, 255, 255, 0.1),
+		inset 0 -38px 52px -44px rgba(0, 0, 0, 0.3);
 }
-/* diagonal reflection sweep — a highlight streak across the pane */
-#scrim::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(
-		115deg,
-		transparent 33%,
-		rgba(255, 255, 255, 0.05) 47%,
-		rgba(255, 255, 255, 0.11) 50%,
-		rgba(255, 255, 255, 0.04) 53%,
-		transparent 67%
-	);
-	pointer-events: none;
-}
-/* frosted grain — the "sprayed paint on glass" micro-texture */
+/* subtle frosted grain */
 #scrim::after {
 	content: "";
 	position: absolute;
 	inset: 0;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
-	opacity: 0.09;
+	opacity: 0.035;
 	mix-blend-mode: overlay;
 	pointer-events: none;
 }
