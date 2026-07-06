@@ -64,7 +64,7 @@ body {
 	transition: opacity 0.4s var(--ease);
 }
 #bg.show {
-	opacity: 0.6;
+	opacity: 1;
 }
 #scrim {
 	position: absolute;
@@ -205,7 +205,7 @@ body {
 }
 .title {
 	display: inline-block;
-	font-size: 16.5px;
+	font-size: 15px;
 	font-weight: 700;
 	letter-spacing: 0.01em;
 }
@@ -213,8 +213,8 @@ body {
 	display: flex;
 	align-items: baseline;
 	gap: 5px;
-	margin-top: 3px;
-	font-size: 13px;
+	margin-top: 2px;
+	font-size: 11px;
 	white-space: nowrap;
 	overflow: hidden;
 }
@@ -256,34 +256,34 @@ body {
 
 /* ---- map stats row ---- */
 .map {
-	gap: 10px;
+	gap: 8px;
 }
 .sr {
 	display: inline-flex;
 	align-items: center;
 	gap: 2px;
-	font-size: 15px;
+	font-size: 12px;
 	font-weight: 800;
 	color: #14151c;
 	background: var(--accent);
-	padding: 3px 9px;
-	border-radius: 8px;
+	padding: 2px 7px;
+	border-radius: 7px;
 }
 .sr i {
 	font-style: normal;
-	font-size: 12px;
+	font-size: 10px;
 	opacity: 0.85;
 }
 .stat {
 	display: flex;
 	align-items: baseline;
 	gap: 4px;
-	font-size: 13.5px;
+	font-size: 11px;
 }
 .stat label {
 	color: var(--text-dim);
 	font-weight: 600;
-	font-size: 11px;
+	font-size: 9.5px;
 	letter-spacing: 0.05em;
 }
 .stat span {
@@ -336,14 +336,14 @@ body {
 	line-height: 1.1;
 }
 .pp-mini b {
-	font-size: 16.5px;
+	font-size: 15px;
 	font-weight: 700;
 	color: var(--text);
 	font-variant-numeric: tabular-nums;
 }
 .pp-mini i {
 	font-style: normal;
-	font-size: 10.5px;
+	font-size: 9px;
 	font-weight: 700;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
