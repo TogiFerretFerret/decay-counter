@@ -107,7 +107,6 @@ export function applySettings(m) {
 	if (m.GoodColor) setVar("--good", m.GoodColor);
 	if (m.OkColor) setVar("--ok", m.OkColor);
 	if (m.BadColor) setVar("--bad", m.BadColor);
-	if (m.PanelOpacity != null) setVar("--panel-opacity", Number(m.PanelOpacity) / 100);
 
 	if (m.ShowBackground != null) settings.ShowBackground = truthy(m.ShowBackground);
 	if (m.ShowUR != null) {

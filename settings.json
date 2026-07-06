@@ -14,15 +14,6 @@
     "value": "#c4a6ff"
   },
   {
-    "uniqueID": "PanelOpacity",
-    "type": "number",
-    "title": "Panel opacity",
-    "description": "Opacity of the frosted panel background (0-100).",
-    "min": 0,
-    "max": 100,
-    "value": 58
-  },
-  {
     "uniqueID": "Tagline",
     "type": "text",
     "title": "Tagline",
