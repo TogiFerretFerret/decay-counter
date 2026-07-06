@@ -42,12 +42,12 @@ body {
 .graph-wrap {
 	position: relative;
 	flex-shrink: 0;
-	height: 42px;
+	height: 32px;
 }
 .graph {
 	display: block;
 	width: 100%;
-	height: 42px;
+	height: 32px;
 	background: rgba(var(--panel), calc(var(--panel-opacity) * 0.9));
 }
 
