@@ -10,8 +10,8 @@
 	/* surfaces */
 	--bg: #0f1017;
 	--panel: 18, 20, 28; /* rgb triplet; opacity applied via --panel-opacity */
-	--panel-opacity: 0.46; /* translucent tint over the blurred beatmap-art frost */
-	--panel-blur: 24px;
+	--panel-opacity: 0.66; /* tint over the frosted beatmap-art glass — legibility first */
+	--panel-blur: 26px;
 	--radius: 16px;
 
 	/* text */
