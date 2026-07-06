@@ -475,6 +475,30 @@ body {
 .state-result .mini-max {
 	display: none;
 }
+/* with max hidden, IF-FC owns the row — enlarge it and pop it in */
+.state-result .pp-mini b {
+	font-size: 28px;
+}
+.state-result .pp-mini i {
+	font-size: 13px;
+}
+.state-result .mini-fc {
+	animation: fc-pop 0.5s var(--ease) both;
+	transform-origin: left center;
+}
+@keyframes fc-pop {
+	0% {
+		transform: scale(0.6) translateY(6px);
+		opacity: 0;
+	}
+	60% {
+		transform: scale(1.08) translateY(0);
+	}
+	100% {
+		transform: scale(1) translateY(0);
+		opacity: 1;
+	}
+}
 
 /* subtle kiai pulse */
 @keyframes kiai {
