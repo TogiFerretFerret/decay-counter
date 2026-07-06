@@ -10,8 +10,8 @@
 	/* surfaces */
 	--bg: #0f1017;
 	--panel: 18, 20, 28; /* rgb triplet; opacity applied via --panel-opacity */
-	--panel-opacity: 0.98;
-	--panel-blur: 20px;
+	--panel-opacity: 0.58; /* frosted glass: gameplay reads through it, not a solid block */
+	--panel-blur: 22px;
 	--radius: 16px;
 
 	/* text */
