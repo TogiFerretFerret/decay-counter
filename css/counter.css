@@ -448,6 +448,13 @@ body {
 }
 
 /* ---- state-driven visibility ---- */
+/* menu has no beatmap bg to frost, so the glass reads as pure transparency —
+   make the panel much more opaque there; in-game the blurred bg does the work.
+   Overrides the settings-driven --panel-opacity for #scrim's descendants. */
+.state-menu {
+	--panel-opacity: 0.92;
+}
+
 /* menu: no live play data — hide combo/judge/mini, show map + potential pp */
 .state-menu .judge,
 .state-menu .combo,
