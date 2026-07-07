@@ -1,0 +1,32 @@
+/*
+ * theme.css — THE reskin file.
+ * Every color / feel knob lives here as a CSS variable. Placeholder palette is
+ * tokyo-night-ish (neutral dark + one accent). Swap these for Decay's colors
+ * once we know the vibe — or drive them live from the tosu dashboard (settings.json).
+ */
+:root {
+	--font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+	/* surfaces */
+	--bg: #0f1017;
+	--panel: 18, 20, 28; /* rgb triplet; opacity applied via --panel-opacity */
+	--panel-opacity: 0.6;
+	--panel-blur: 24px;
+	--radius: 16px;
+
+	/* text */
+	--text: #e8e9f2;
+	--text-dim: #8b90a3;
+
+	/* accent + judgements (overridable via settings.json) */
+	/* Decay's faves: light blue (primary) + light purple (secondary) */
+	--accent: #7cc4ff;
+	--accent-2: #c4a6ff;
+	--good: #9ece6a;
+	--ok: #e0af68;
+	--bad: #f7768e;
+
+	/* motion */
+	--ease: cubic-bezier(0.22, 1, 0.36, 1);
+	--dur: 0.35s;
+}
