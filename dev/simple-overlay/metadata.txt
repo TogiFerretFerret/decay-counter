@@ -1,0 +1,7 @@
+Usecase: ingame, obs-overlay
+Name: decay-simple
+Author: River
+CompatibleWith: tosu
+Resolution: 500 x 118
+authorLinks: https://github.com/TogiFerretFerret
+Notes: minimal pp counter for IsThatDecay — pp, SR, song, 100/50/miss. <3
