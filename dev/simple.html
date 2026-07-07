@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>simple</title>
+		<link rel="stylesheet" href="../css/theme.css" />
+		<link rel="stylesheet" href="../css/counter.css" />
+		<style>
+			/* minimal variant: pp (hero) -> SR -> song, plus 100/50/miss. nothing else.
+			   compact 500x118 frame, no graph / identity / stats / mods / acc / combo.
+			   scene (menu|play|result) is chosen with ?scene= and swapped by the inline
+			   script at the bottom — same idea as the main counter's ?mockScene. */
+			html,
+			body,
+			#app {
+				width: 500px;
+				height: 118px;
+			}
+			#bg {
+				background: linear-gradient(135deg, #3a2f6b, #7a3b6e 55%, #2b4a7a);
+			}
+			.card {
+				padding: 5px 16px 14px;
+				gap: 0;
+				justify-content: space-between;
+			}
+			.top {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 12px;
+			}
+			.top .titles {
+				min-width: 0;
+			}
+			.top .title {
+				font-size: 16px;
+				font-weight: 700;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			.top .sub {
+				display: none;
+				align-items: baseline;
+				gap: 5px;
+				margin-top: 1px;
+				font-size: 12px;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+			.top .sub .diff {
+				color: var(--text);
+				font-weight: 600;
+			}
+			.top .sub .mapper {
+				color: var(--text-dim);
+			}
+			.top .sub .dot {
+				color: var(--text-dim);
+				opacity: 0.5;
+			}
+			#app.has-sub .top .sub {
+				display: flex;
+			}
+			.top-right {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				flex-shrink: 0;
+			}
+			.top .mods {
+				gap: 3px;
+			}
+			.top .mods .mod {
+				font-size: 12px;
+				padding: 2px 6px;
+			}
+			.top .sr {
+				font-size: 14px;
+				padding: 2px 8px;
+			}
+			.hero {
+				display: flex;
+				align-items: flex-end;
+				justify-content: space-between;
+				gap: 14px;
+			}
+			.pp-cur {
+				font-size: 58px;
+			}
+			.pp-unit {
+				font-size: 18px;
+			}
+			.pp-mini {
+				margin-bottom: 8px;
+			}
+			.pp-mini b {
+				font-size: 22px;
+			}
+			.pp-mini i {
+				font-size: 11px;
+			}
+			.judge {
+				margin: 0;
+				gap: 16px;
+				font-size: 26px;
+			}
+			.judge .j i {
+				font-size: 12px;
+			}
+			.hero-right {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-end;
+				gap: 5px;
+				margin-bottom: 6px;
+			}
+			.hero .tagline {
+				position: static;
+				font-size: 11px;
+				font-weight: 800;
+				letter-spacing: 0.14em;
+				text-transform: lowercase;
+				color: var(--accent-2);
+				opacity: 0.85;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app" class="minimal">
+			<div id="bg" class="show"></div>
+			<div id="scrim"></div>
+			<div class="card">
+				<div class="top">
+					<div class="titles">
+						<span class="title">Camellia - Ghost feat. Nanahira</span>
+						<div class="sub">
+							<span class="diff">[Haunting]</span>
+							<span class="dot">·</span>
+							<span class="mapper">Sotarks</span>
+						</div>
+					</div>
+					<div class="top-right">
+						<div class="mods"><span class="mod">HD</span><span class="mod">DT</span></div>
+						<span class="sr" style="background: #5f5ed9; color: #fff"><span>6.83</span><i>★</i></span>
+					</div>
+				</div>
+				<div class="hero">
+					<div class="pp-group">
+						<div class="pp"><span class="pp-cur" id="ppcur">1247</span><span class="pp-unit">pp</span></div>
+						<div class="pp-mini" id="ppmini-wrap"></div>
+					</div>
+					<div class="hero-right">
+						<div class="judge" id="judge">
+							<span class="j good" id="jg">312</span>
+							<span class="j ok" id="jo">14</span>
+							<span class="j bad" id="jb">3</span>
+						</div>
+						<div class="tagline">isthatdecay</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			const scenes = {
+				menu: { pp: "648", minis: [], judge: false },
+				play: { pp: "1247", minis: [["1583", "max curr"], ["1720", "if fc"]], judge: true },
+				result: { pp: "892", minis: [["1010", "if fc"]], judge: true },
+			};
+			const params = new URLSearchParams(location.search);
+			const scene = params.get("scene") || "play";
+			const s = scenes[scene] || scenes.play;
+			if (params.get("sub") !== "0") document.getElementById("app").classList.add("has-sub");
+			document.getElementById("ppcur").textContent = s.pp;
+			const wrap = document.getElementById("ppmini-wrap");
+			wrap.innerHTML = "";
+			for (const [val, lbl] of s.minis) {
+				const row = document.createElement("div");
+				row.className = "mini";
+				row.innerHTML = `<b>${val}</b><i>${lbl}</i>`;
+				wrap.appendChild(row);
+			}
+			wrap.style.display = s.minis.length ? "" : "none";
+			document.getElementById("judge").style.display = s.judge ? "" : "none";
+		</script>
+	</body>
+</html>

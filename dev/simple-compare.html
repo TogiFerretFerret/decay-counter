@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>simple — compare</title>
+		<style>
+			html,
+			body {
+				margin: 0;
+				background: #0b0c12;
+				font-family: "Inter", system-ui, sans-serif;
+			}
+			.wrap {
+				display: flex;
+				gap: 16px;
+				padding: 16px;
+				align-items: flex-start;
+			}
+			.col {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+			}
+			.lbl {
+				color: #8b90a3;
+				font-size: 12px;
+				font-weight: 700;
+				letter-spacing: 0.04em;
+			}
+			iframe {
+				border: 0;
+				width: 500px;
+				height: 118px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="col">
+				<div class="lbl">no mapper / diff</div>
+				<iframe src="simple.html?scene=play&amp;sub=0"></iframe>
+			</div>
+			<div class="col">
+				<div class="lbl">with mapper / diff</div>
+				<iframe src="simple.html?scene=play&amp;sub=1"></iframe>
+			</div>
+		</div>
+	</body>
+</html>

@@ -17,14 +17,23 @@ if [ "${1:-}" = "opt" ]; then
 fi
 
 states=("${args[@]}")
-[ ${#states[@]} -eq 0 ] && states=(menu play result)
+[ ${#states[@]} -eq 0 ] && states=(menu play result simple)
+
+show_one() { # label img
+	printf '\n──────── %s ────────\n' "$1"
+	if [ -f "$2" ]; then
+		tpix "$2"
+	else
+		printf '  (missing %s — run dev/shots.sh)\n' "$2"
+	fi
+}
 
 for s in "${states[@]}"; do
-	img="/tmp/decay2-$s.png"
-	printf '\n──────── %s ────────\n' "$s"
-	if [ -f "$img" ]; then
-		tpix "$img"
+	if [ "$s" = "simple" ]; then
+		for sc in menu play result; do
+			show_one "simple/$sc" "/tmp/decay2-simple-$sc.png"
+		done
 	else
-		printf '  (missing %s — run dev/shots.sh)\n' "$img"
+		show_one "$s" "/tmp/decay2-$s.png"
 	fi
 done

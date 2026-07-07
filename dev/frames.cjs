@@ -51,7 +51,7 @@ function rankFor(acc, misses) {
 	return "D";
 }
 
-function frame(scene, prog) {
+function frame(scene, prog, opts = {}) {
 	const inPlay = scene === "play";
 	const inResult = scene === "result";
 	const p = inPlay ? prog : inResult ? 1 : 0;
@@ -65,7 +65,10 @@ function frame(scene, prog) {
 	const rank = rankFor(acc, h0);
 	const comboMax = Math.round(MAP.maxCombo * (inResult ? 0.71 : Math.min(1, p * 1.1)));
 	const comboCur = inPlay ? Math.round(comboMax * 0.55) : comboMax;
-	const ppCur = Math.round(p * 486);
+	const ppCur = opts.pp != null ? opts.pp : Math.round(p * 486);
+	const ppFc = opts.ppFc != null ? opts.ppFc : opts.pp != null ? Math.round(opts.pp * 1.15) : 512;
+	const ppMaxAchievable =
+		opts.pp != null ? Math.round(opts.pp * 1.08) : Math.round(ppCur + (512 - ppCur) * 0.72);
 	const stateName = scene === "menu" ? "menu" : scene === "result" ? "resultScreen" : "play";
 
 	const hits = {
